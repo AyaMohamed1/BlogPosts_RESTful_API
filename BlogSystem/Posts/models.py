@@ -28,8 +28,8 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE,
-                                 null=True, related_name="book_authors")
-    categories = models.ManyToManyField(Category, related_name="book_categories")
+                                 null=True, related_name="post_authors")
+    categories = models.ManyToManyField(Category, related_name="post_categories")
 
     def __str__(self):
         return self.title
