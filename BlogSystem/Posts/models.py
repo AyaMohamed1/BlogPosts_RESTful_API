@@ -31,8 +31,8 @@ class Post(models.Model):
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="post_authors")
-    categories = models.ManyToManyField(Category, related_name="post_categories")
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="author_posts")
+    categories = models.ManyToManyField(Category, related_name="category_posts")
 
     def __str__(self):
         return self.title
