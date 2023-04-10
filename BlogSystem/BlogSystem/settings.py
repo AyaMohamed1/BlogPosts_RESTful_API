@@ -148,3 +148,5 @@ REST_FRAMEWORK = {
     ],
     'PAGE_SIZE': 2
 }
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
