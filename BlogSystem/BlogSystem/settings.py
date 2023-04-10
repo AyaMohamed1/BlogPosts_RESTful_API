@@ -14,9 +14,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
 import os
-import mimetypes 
+# import mimetypes 
 
-mimetypes.add_type("text/css", ".css", True)
+# mimetypes.add_type("text/css", ".css", True)
 
 load_dotenv()
 
@@ -134,6 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
