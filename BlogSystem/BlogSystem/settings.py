@@ -14,6 +14,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
 import os
+import mimetypes 
+
+mimetypes.add_type("text/css", ".css", True)
 
 load_dotenv()
 
@@ -28,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
