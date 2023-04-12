@@ -3,7 +3,7 @@
 
 
 Models
-    - A Post contains the following properties:
+    A Post contains the following properties:
         •	Author: One to Many
         •	Title
         •	Subtitle
@@ -13,13 +13,13 @@ Models
         •	Created_at
         •	Updated_at
         
-    - An Author contains the following properties:
+    An Author contains the following properties:
         •	Name
         •	Age
         •	Created_at
         •	Updated_at
         
-    - A Category contains the following properties:
+    A Category contains the following properties:
         •	Name
         •	Created_at
         •	Updated_at
@@ -27,18 +27,18 @@ Models
   
 APIs:
 RESTful API to perform the following actions:
-    - Tokens
+    Tokens
         •	Get auth token.
         •	Refresh auth token.
         
-    - Posts
+    Posts
         •	Listing blog posts (public api)
         •	Getting a single blog post (public api)
         •	Adding a blog post (protected)
         •	Deleting a blog post (protected)
         •	Updating a blog post (protected)
         
-    - Authors
+    Authors
         •	Listing authors (public api)
         •	Listing authors blogs (public api)
         •	Getting an author (public api)
@@ -47,7 +47,7 @@ RESTful API to perform the following actions:
         •	Updating an author (protected)
         •	Deleting an author (protected)
         
-    - Categories
+    Categories
         •	Listing categories (public api)
         •	Getting a category (public api)
         •	Adding a category (protected)
@@ -56,12 +56,12 @@ RESTful API to perform the following actions:
         
 Unit tests:
 Added unit tests for:
-    - Create Access Token Test Case
-    - Post List Test Case
-    - Author List Test Case
-    - Categories List Test Case
-    - Author Create Test Case
-    - Categories Create Test Case
-    - Post Create Test Case
+    • Create Access Token Test Case
+    • Post List Test Case
+    • Author List Test Case
+    • Categories List Test Case
+    • Author Create Test Case
+    • Categories Create Test Case
+    • Post Create Test Case
 
 
