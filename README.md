@@ -66,5 +66,17 @@ Added unit tests for:
     • Author Create Test Case
     • Categories Create Test Case
     • Post Create Test Case
+    
+ To use postman collection please follow these steps:
+    
+    1- Open your postman.
+    2- Select Import.
+    3- Paste the collection api link.
+    4- Go to the *Tokens* folder.
+    5- Use *Get New Token* api to get your new access token.
+    6- Copy your new access token to the *authorization* tap in the collection main folder.
+    7- Copy your refresh token.
+    8- Go to the *Tokens* folder and change the refresh token in the request body.
+    9- Now you can use all the APIs as authorized user and whenever the token is expired you can use *Refresh Token* API to get the new one within 24 hours of the first token generation.
 
 
