@@ -3,8 +3,8 @@
 
 
 Models
+
     A Post contains the following properties:
-    
         •	Author: One to Many
         •	Title
         •	Subtitle
