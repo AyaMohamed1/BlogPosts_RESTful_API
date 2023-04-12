@@ -4,6 +4,7 @@
 
 Models
     A Post contains the following properties:
+    
         •	Author: One to Many
         •	Title
         •	Subtitle
@@ -11,14 +12,12 @@ Models
         •	Body
         •	Categories: Many to Many
         •	Created_at
-        •	Updated_at
-        
+        •	Updated_at     
     An Author contains the following properties:
         •	Name
         •	Age
         •	Created_at
         •	Updated_at
-        
     A Category contains the following properties:
         •	Name
         •	Created_at
@@ -27,17 +26,16 @@ Models
   
 APIs:
 RESTful API to perform the following actions:
+
     Tokens
         •	Get auth token.
-        •	Refresh auth token.
-        
+        •	Refresh auth token.  
     Posts
         •	Listing blog posts (public api)
         •	Getting a single blog post (public api)
         •	Adding a blog post (protected)
         •	Deleting a blog post (protected)
-        •	Updating a blog post (protected)
-        
+        •	Updating a blog post (protected)    
     Authors
         •	Listing authors (public api)
         •	Listing authors blogs (public api)
@@ -56,6 +54,7 @@ RESTful API to perform the following actions:
         
 Unit tests:
 Added unit tests for:
+
     • Create Access Token Test Case
     • Post List Test Case
     • Author List Test Case
