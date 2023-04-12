@@ -137,3 +137,64 @@ class CategoriesCreateTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["name"], category1["name"])
 
+
+class PostCreateTestCase(APITestCase):
+    def setUp(self):
+        self.username = 'adminTest'
+        self.password = 'admin'
+        self.data = {
+            'username': self.username,
+            'password': self.password
+        }
+        url = reverse('token_obtain_pair')
+
+        # Create a user
+        user = User.objects.create_user(username='adminTest', password='admin')
+
+        # Post to get token
+        response = self.client.post(url, self.data, format='json')
+        self.access_token = response.data["access"]
+        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
+
+        # Create categories
+        self.category0 = Category.objects.create(name='First Category')
+        self.category1 = Category.objects.create(name='Second Category')
+        self.category0.save()
+        self.category1.save()
+
+        # Create author
+        self.author = Author.objects.create(name='Author')
+        self.author.save()
+
+        # # Get author
+        # self.author = Author.objects.get(id=1)
+
+        # # Get categories
+        # self.category0 = Category.objects.get(id=1)
+        # self.category1 = Category.objects.get(id=2)
+
+    # Create post
+    def test_details(self):
+        payload = {
+                "title": "New title",
+                "sub_title": "test sub title",
+                "image_URL": "https://pixabay.com/photos/corgi-dog-pet-canine-rain-animal-4415649/",
+                "body": "This is body content test",
+                "author": self.author.pk,
+                "categories": [
+                            self.category0.pk,
+                            self.category1.pk
+                        ]    
+            }
+        
+        response = self.client.post(reverse("createPost"), payload)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        if status.is_success(response.status_code):
+            response_data = response.data
+            for key, value in payload.items():
+                assert response_data[key] == value
+
+
+
+    
+
