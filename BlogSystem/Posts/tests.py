@@ -1,9 +1,8 @@
-from rest_framework.test import APITestCase, APIRequestFactory
+from rest_framework.test import APITestCase
 from django.urls import reverse
 from rest_framework import status
 from django.contrib.auth import get_user_model
 from Posts.models import Category, Author
-
 
 User = get_user_model()
 class CreateAccessTokenTestCase(APITestCase):
@@ -120,7 +119,7 @@ class CategoriesCreateTestCase(APITestCase):
         # Post to get token
         response = self.client.post(url, self.data, format='json')
         self.access_token = response.data["access"]
-    
+        
     def test_details(self):
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
         category0 = {
@@ -166,13 +165,6 @@ class PostCreateTestCase(APITestCase):
         self.author = Author.objects.create(name='Author')
         self.author.save()
 
-        # # Get author
-        # self.author = Author.objects.get(id=1)
-
-        # # Get categories
-        # self.category0 = Category.objects.get(id=1)
-        # self.category1 = Category.objects.get(id=2)
-
     # Create post
     def test_details(self):
         payload = {
@@ -184,17 +176,11 @@ class PostCreateTestCase(APITestCase):
                 "categories": [
                             self.category0.pk,
                             self.category1.pk
-                        ]    
+                        ]
             }
-        
         response = self.client.post(reverse("createPost"), payload)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         if status.is_success(response.status_code):
             response_data = response.data
             for key, value in payload.items():
                 assert response_data[key] == value
-
-
-
-    
-

@@ -22,3 +22,4 @@ class AuthorPostsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
         fields = ['name', 'age', 'author_posts']
+        
