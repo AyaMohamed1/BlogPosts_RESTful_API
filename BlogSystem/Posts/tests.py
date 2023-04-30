@@ -214,6 +214,59 @@ class AuthorGetTestCase(APITestCase):
             self.assertEqual(response_data["id"], self.author.id)
             self.assertEqual(response_data["name"], self.author.name)
 
+class AuthorPostsGetTestCase(APITestCase):
+    def setUp(self):
+        # Create author
+        self.author = Author.objects.create(name='Author')
+        self.author.save()
+        # Create category
+        self.category = Category.objects.create(name='Second Category')
+        self.category.save()
+        # Create post
+        self.post = Post.objects.create(title="New title"
+                                        , sub_title="test sub title"
+                                        , image_URL="https://pixabay.com/photos/corgi-dog-pet-canine-rain-animal-4415649/"
+                                        , body="This is body content test"
+                                        , author=self.author)
+        
+        self.post.categories.set([self.category])
+        self.post.save()
+        self.url = reverse("getAuthorPosts", args=[self.author.id])
+
+    def test_details(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        if status.is_success(response.status_code):
+            response_data = response.data
+            self.assertEqual(response_data["name"], self.author.name)
+            self.assertEqual(len(response_data["author_posts"]), 1)
+
+
+class AuthorsPostsGetTestCase(APITestCase):
+    def setUp(self):
+        # Create author
+        self.author = Author.objects.create(name='Author')
+        self.author.save()
+        # Create category
+        self.category = Category.objects.create(name='Second Category')
+        self.category.save()
+        # Create post
+        self.post = Post.objects.create(title="New title"
+                                        , sub_title="test sub title"
+                                        , image_URL="https://pixabay.com/photos/corgi-dog-pet-canine-rain-animal-4415649/"
+                                        , body="This is body content test"
+                                        , author=self.author)
+        
+        self.post.categories.set([self.category])
+        self.post.save()
+        self.url = reverse("getAuthorsPosts", args=[self.author.id])
+
+    def test_details(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        if status.is_success(response.status_code):
+            self.assertEqual(len(response.data), 1)
+
 class AuthorCreateTestCase(APITestCase):
     def setUp(self):
         createUserWithToken(self)
