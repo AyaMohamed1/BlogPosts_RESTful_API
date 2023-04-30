@@ -259,7 +259,7 @@ class AuthorsPostsGetTestCase(APITestCase):
         
         self.post.categories.set([self.category])
         self.post.save()
-        self.url = reverse("getAuthorsPosts", args=[self.author.id])
+        self.url = reverse("getAuthorsPosts")
 
     def test_details(self):
         response = self.client.get(self.url)
